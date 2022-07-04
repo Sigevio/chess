@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.shape.Line?>
+
+<AnchorPane style="-fx-background-color: #000000"
+	maxHeight="600.0" maxWidth="560.0" minHeight="600.0" minWidth="560.0"
+	prefHeight="600.0" prefWidth="560.0"
+	xmlns="http://javafx.com/javafx/15.0.1"
+	xmlns:fx="http://javafx.com/fxml/1"
+	fx:controller="chess.fxui.ChessController">
+	<children>
+		<StackPane fx:id="sp" AnchorPane.bottomAnchor="0.0"
+			AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0"
+			AnchorPane.topAnchor="0.0">
+			<children>
+				<!--CHESS BOARD-->
+				<Pane fx:id="board" />
+				<!--NUMBERS, LETTERS AND LINES-->
+				<Pane mouseTransparent="true">
+					<children>
+						<Text translateX="15" translateY="77"
+							style="-fx-fill: #666666; -fx-font-size: 20px">1</Text>
+						<Text translateX="15" translateY="137"
+							style="-fx-fill: #666666; -fx-font-size: 20px">2</Text>
+						<Text translateX="15" translateY="197"
+							style="-fx-fill: #666666; -fx-font-size: 20px">3</Text>
+						<Text translateX="15" translateY="257"
+							style="-fx-fill: #666666; -fx-font-size: 20px">4</Text>
+						<Text translateX="15" translateY="317"
+							style="-fx-fill: #666666; -fx-font-size: 20px">5</Text>
+						<Text translateX="15" translateY="377"
+							style="-fx-fill: #666666; -fx-font-size: 20px">6</Text>
+						<Text translateX="15" translateY="437"
+							style="-fx-fill: #666666; -fx-font-size: 20px">7</Text>
+						<Text translateX="15" translateY="497"
+							style="-fx-fill: #666666; -fx-font-size: 20px">8</Text>
+
+						<Text translateX="64" translateY="27"
+							style="-fx-fill: #666666; -fx-font-size: 20px">A</Text>
+						<Text translateX="124" translateY="27"
+							style="-fx-fill: #666666; -fx-font-size: 20px">B</Text>
+						<Text translateX="184" translateY="27"
+							style="-fx-fill: #666666; -fx-font-size: 20px">C</Text>
+						<Text translateX="244" translateY="27"
+							style="-fx-fill: #666666; -fx-font-size: 20px">D</Text>
+						<Text translateX="304" translateY="27"
+							style="-fx-fill: #666666; -fx-font-size: 20px">E</Text>
+						<Text translateX="364" translateY="27"
+							style="-fx-fill: #666666; -fx-font-size: 20px">F</Text>
+						<Text translateX="424" translateY="27"
+							style="-fx-fill: #666666; -fx-font-size: 20px">G</Text>
+						<Text translateX="484" translateY="27"
+							style="-fx-fill: #666666; -fx-font-size: 20px">H</Text>
+
+						<!--TOP LINE-->
+						<Line startX="39" endX="521" layoutY="39"
+							strokeWidth="2.0" stroke="#461F00" />
+						<!--BOTTOM LINE-->
+						<Line startX="39" endX="521" layoutY="521"
+							strokeWidth="2.0" stroke="#461F00" />
+						<!--LEFT LINE-->
+						<Line layoutX="39" startY="39" endY="521"
+							strokeWidth="2.0" stroke="#461F00" />
+						<!--RIGHT LINE-->
+						<Line layoutX="521" startY="39" endY="521"
+							strokeWidth="2.0" stroke="#461F00" />
+					</children>
+				</Pane>
+				<Pane fx:id="checkmatedBlackScreen" visible="false"
+					style="-fx-background-color: black">
+					<children>
+						<Text translateX="75" translateY="250"
+							style="-fx-fill: white; -fx-font-size: 40px">Checkmate! White won!</Text>
+					</children>
+				</Pane>
+				<Pane fx:id="checkmatedWhiteScreen" visible="false"
+					style="-fx-background-color: black">
+					<children>
+						<Text translateX="79" translateY="250"
+							style="-fx-fill: white; -fx-font-size: 40px">Checkmate! Black won!</Text>
+					</children>
+				</Pane>
+				<Pane fx:id="stalematedBlackScreen" visible="false"
+					style="-fx-background-color: black">
+					<children>
+						<Text translateX="38" translateY="250"
+							style="-fx-fill: white; -fx-font-size: 40px">It's a draw! Black stalemated!</Text>
+					</children>
+				</Pane>
+				<Pane fx:id="stalematedWhiteScreen" visible="false"
+					style="-fx-background-color: black">
+					<children>
+						<Text translateX="35" translateY="250"
+							style="-fx-fill: white; -fx-font-size: 40px">It's a draw! White stalemated!</Text>
+					</children>
+				</Pane>
+				<TextField fx:id="filename" translateY="240"
+					translateX="-152" prefWidth="175.0" maxWidth="175.0"
+					prefHeight="27"
+					style="-fx-font: 14 helvetica; -fx-background-color: #666666; -fx-border-color: #461F00; -fx-border-radius: 3px;" />
+				<Button fx:id="saveButton" text="Save" onAction="#saveState"
+					translateY="240" translateX="-30"
+					style="-fx-font: 14 helvetica; -fx-background-color: #666666; -fx-border-color: #461F00; -fx-border-radius: 3px;"
+					textFill="black">
+					<cursor>
+						<Cursor fx:constant="HAND" />
+					</cursor>
+				</Button>
+				<Button fx:id="loadButton" text="Load" onAction="#loadState"
+					translateY="240" translateX="30"
+					style="-fx-font: 14 helvetica; -fx-background-color: #666666; -fx-border-color: #461F00; -fx-border-radius: 3px;"
+					textFill="black">
+					<cursor>
+						<Cursor fx:constant="HAND" />
+					</cursor>
+				</Button>
+				<Button fx:id="newGameButton" text="New game" onAction="#newGame"
+					translateY="240" translateX="119"
+					style="-fx-font: 14 helvetica; -fx-background-color: #666666; -fx-border-color: #461F00; -fx-border-radius: 3px;"
+					textFill="black">
+					<cursor>
+						<Cursor fx:constant="HAND" />
+					</cursor>
+				</Button>
+				<Button fx:id="toggleBordersButton" text="Borders"
+					onAction="#toggleBorders" translateY="240" translateX="205"
+					style="-fx-font: 14 helvetica; -fx-background-color: #666666; -fx-border-color: #461F00; -fx-border-radius: 3px;"
+					textFill="black">
+					<cursor>
+						<Cursor fx:constant="HAND" />
+					</cursor>
+				</Button>
+				<Text fx:id="defaultFilename" text="filename"
+					mouseTransparent="true" style="-fx-font: 14 helvetica;" fill="grey"
+					translateY="241" translateX="-202" />
+				<Text fx:id="loadingFailText" text="FILE NOT FOUND!"
+					strokeType="outside" mouseTransparent="true" visible="false"
+					fill="red" translateY="270" translateX="-152" />
+				<Text fx:id="loadingSuccessText" text="FILE LOADED!"
+					mouseTransparent="true" visible="false" fill="green"
+					translateY="270" translateX="-152" />
+				<Text fx:id="savingFailText" text="FILE SAVE FAILED!"
+					mouseTransparent="true" visible="false" fill="red"
+					translateY="270" translateX="-152" />
+				<Text fx:id="savingSuccessText" text="FILE SAVED!"
+					mouseTransparent="true" visible="false" fill="green"
+					translateY="270" translateX="-152" />
+				<Text fx:id="newGameText" text="STARTED NEW GAME!"
+					mouseTransparent="true" visible="false" fill="green"
+					translateY="270" translateX="-152" />
+			</children>
+		</StackPane>
+	</children>
+</AnchorPane>
