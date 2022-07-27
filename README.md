@@ -4,4 +4,5 @@ A school project for the course TDT4100. It's a basic chess application with sim
 
 ### Built with
 
-* Java / JavaFX
+* Java
+  * JavaFX
